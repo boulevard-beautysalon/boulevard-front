@@ -1,0 +1,115 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://nbygkøbenhavn.dk/#website",
+      "url": "https://nbygkøbenhavn.dk",
+      "name": "Nbyg – Tagfirma i København",
+      "description": "Professionelt tagfirma i København med speciale i tagrenovering, nyt tag og opbygning af træterrasser. Få et gratis og uforpligtende tilbud fra Nbyg i dag."
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://nbygkøbenhavn.dk/#organization",
+      "name": "Nbyg – Tagfirma i København",
+      "url": "https://nbygkøbenhavn.dk",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nbygkøbenhavn.dk/images/logo.png"
+      },
+      "image": "https://nbygkøbenhavn.dk/opengraph-image.jpg",
+      "telephone": "+45 91 84 28 57",
+      "email": "nbygkobenhavn.kunder@gmail.com",
+      "sameAs": [
+        "https://www.instagram.com/nbyg_bornholm/",
+        "https://www.facebook.com/people/Nbyg/61553067324072/",
+        "https://www.youtube.com/@nbygvideo"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://nbygkøbenhavn.dk/#localbusiness",
+      "name": "Nbyg – Tagfirma i København",
+      "url": "https://nbygkøbenhavn.dk",
+      "logo": "https://nbygkøbenhavn.dk/images/logo.png",
+      "image": "https://nbygkøbenhavn.dk/opengraph-image.jpg",
+      "telephone": "+45 91 84 28 57",
+      "email": "nbygkobenhavn.kunder@gmail.com",
+      "openingHours": "Mo-Fr 08:00-17:00",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bolbyvej 2",
+        "addressLocality": "Klemensker",
+        "postalCode": "3782",
+        "addressCountry": "DK"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "N-BYG",
+        "url": "https://n-byg.dk"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nbygkøbenhavn.dk/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Hvorslev byggefirma Nbyg?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vores hovedkontor ligger på Bornholm, men vi har åbnet en afdeling i København for at være tættere på vores kunder i hovedstadsområdet og tilbyde samme høje kvalitet lokalt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvilke typer arbejde udfører I?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vi udfører alle typer byggearbejde – både indendørs og udendørs. Det omfatter nye tage, tagrenovering, isolering, terrasser, totalrenovering af huse og lejligheder, renovering af badeværelser og facadearbejde."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvor lang tid tager arbejdet normalt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Et nyt tag på ca. 100 m² tager typisk 1–2 uger, mens en terrasse normalt færdiggøres på 3–5 dage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvordan foregår planlægningen af et projekt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Du kontakter os via telefon, e-mail eller kontaktformular. Vi besigtiger opgaven, taler om dine ønsker og udarbejder et tilbud."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Giver I garanti på arbejdet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, vi giver 2 års garanti på alt byggearbejde og op til 5 år på større projekter som tag og terrasser."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hjælper I med loftisolering og energioptimering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, vi tilbyder loftisolering, hulmursisolering og efterisolering for bedre energieffektivitet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad er prisen på tømrerarbejde?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prisen afhænger af opgavens type og omfang. Du kan se vejledende priser på siden Byggeydelser og bruge vores online prisberegnere."
+          }
+        }
+      ]
+    }
+  ]
+}
