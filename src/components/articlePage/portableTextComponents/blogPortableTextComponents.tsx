@@ -242,13 +242,12 @@ export const getBlogPortableTextComponents = (
         </motion.div>
       );
     },
-    blogPostImageGallery: ({
-      value,
-    }: {
-      value: BlogPostImageGallery;
-    }) => {
-      const images = value?.images ?? [];
+    blogPostImageGallery: ({ value }: { value: BlogPostImageGallery }) => {
+      const images = (value?.images || []).filter(Boolean);
       if (images.length === 0) return null;
+
+      const columnsClass =
+        images.length === 1 ? "columns-1" : "columns-1 sm:columns-2";
 
       const galleryKey = `${slug}-${value?._key || `gallery-${Math.random()}`}`;
 
@@ -260,13 +259,12 @@ export const getBlogPortableTextComponents = (
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ scale: 0.95, y: 20, delay: 0.2 })}
-          className="w-full my-4 lg:my-6 flex flex-col gap-0 overflow-hidden rounded-[16px] leading-none [&_img]:block"
+          className={`w-full my-6 lg:my-8 ${columnsClass} gap-3 lg:gap-4 [column-fill:_balance] last:mb-0`}
         >
           {images.map((img, index) => {
+            if (!img) return null;
             const imageUrl = urlForSanityImage(img).url();
-            const alt = img?.alt || `Blog gallery ${index + 1}`;
-            const itemKey =
-              `${slug}-${img._key || `gallery-${galleryKey}-${index}`}`;
+            const itemKey = `${slug}-${img._key || `gallery-${galleryKey}-${index}`}`;
             const dimensions = (
               img as BlogPostContentImage & {
                 asset?: {
@@ -281,27 +279,24 @@ export const getBlogPortableTextComponents = (
             )?.asset?.metadata?.dimensions;
             const width = dimensions?.width ?? 800;
             const height = dimensions?.height ?? 600;
-
+            const sizes =
+              images.length === 1 ? "100vw" : "(max-width: 1023px) 100vw, 50vw";
             return (
               <Image
                 key={itemKey}
                 src={imageUrl}
                 width={width}
                 height={height}
-                sizes="100vw"
-                alt={alt}
-                className="w-auto max-w-full h-auto"
+                sizes={sizes}
+                alt={img.alt || `Photo ${index + 1}`}
+                className="block w-full h-auto rounded-[12px] mb-3 lg:mb-4 last:mb-0 break-inside-avoid"
               />
             );
           })}
         </motion.div>
       );
     },
-    blogPostContentLink: ({
-      value,
-    }: {
-      value: BlogPostContentLinkBlock;
-    }) => {
+    blogPostContentLink: ({ value }: { value: BlogPostContentLinkBlock }) => {
       const href = value.href || "#";
       const label = value.label || "";
       const displayAs = value.displayAs ?? "text";
@@ -329,9 +324,7 @@ export const getBlogPortableTextComponents = (
             <Button
               href={href}
               variant={buttonVariant}
-              linkType={
-                isExternalHref(href) ? "external" : "internal"
-              }
+              linkType={isExternalHref(href) ? "external" : "internal"}
               blank={blank}
               className="inline-flex w-fit min-w-[200px] max-w-full shrink-0 px-8"
             >
