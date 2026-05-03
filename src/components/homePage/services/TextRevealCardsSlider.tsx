@@ -32,6 +32,7 @@ export default function TextRevealCardsSlider({
           slidesPerView: "auto",
         },
       }}
+      loop={true}
       uniqueKey={uniqueKey}
       component={component}
       swiperClassName="text-reveal-cards-slider"
