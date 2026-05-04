@@ -82,6 +82,7 @@
   .swiper.recommended-posts-slider,
   .swiper.reviews-slider,
   .swiper.results-slider {
+    width: 100% !important;
     padding: 12px 0px 24px 0px !important;
 
     @media screen and (min-width: 1024px) {

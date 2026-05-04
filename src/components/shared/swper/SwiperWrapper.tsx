@@ -21,6 +21,13 @@ interface SwiperWrapperProps {
   breakpoints: SwiperOptions["breakpoints"];
   swiperClassName: string;
   loop?: boolean;
+  /** Безшовне «назад на перший» з останнього; стабільніше за `loop` при `slidesPerView: "auto"`. Не поєднується з `loop`. */
+  rewind?: boolean;
+  /**
+   * Режим «triple buffer» зовні Swiper: дубльовані слайди + перецентрування.
+   * Увімкніть разом із власною логікою в батьківському компоненті; тут лише навігація без блокування на краях.
+   */
+  infiniteSlideBuffer?: boolean;
   uniqueKey?: string;
   buttonsPosition?: "right" | "center" | "onSlides";
   component?: ReactNode;
@@ -51,6 +58,8 @@ export default function SwiperWrapper({
   breakpoints,
   swiperClassName,
   loop = false,
+  rewind = false,
+  infiniteSlideBuffer = false,
   buttonsPosition = "center",
   uniqueKey,
   component,
@@ -63,6 +72,9 @@ export default function SwiperWrapper({
   onSwiper,
   onSlideChange,
 }: SwiperWrapperProps) {
+  const effectiveLoop = infiniteSlideBuffer ? false : rewind ? false : loop;
+  const effectiveRewind = infiniteSlideBuffer ? false : rewind;
+
   const swiperInstanceRef = useRef<SwiperType | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -79,7 +91,14 @@ export default function SwiperWrapper({
     e.preventDefault();
     e.stopPropagation();
     const s = swiperInstanceRef.current;
-    if (!s || (s.isBeginning && !s.params.loop)) return;
+    if (
+      !s ||
+      (!infiniteSlideBuffer &&
+        s.isBeginning &&
+        !s.params.loop &&
+        !s.params.rewind)
+    )
+      return;
     s.slidePrev();
   };
 
@@ -87,7 +106,11 @@ export default function SwiperWrapper({
     e.preventDefault();
     e.stopPropagation();
     const s = swiperInstanceRef.current;
-    if (!s || (s.isEnd && !s.params.loop)) return;
+    if (
+      !s ||
+      (!infiniteSlideBuffer && s.isEnd && !s.params.loop && !s.params.rewind)
+    )
+      return;
     s.slideNext();
   };
 
@@ -111,7 +134,8 @@ export default function SwiperWrapper({
         centeredSlides={centeredSlides}
         breakpoints={breakpoints}
         navigation={false}
-        loop={loop}
+        loop={effectiveLoop}
+        rewind={effectiveRewind}
         speed={1000}
         coverflowEffect={
           showCoverflowEffect
@@ -148,7 +172,9 @@ export default function SwiperWrapper({
           >
             <button
               type="button"
-              disabled={isBeginning && !loop}
+              disabled={
+                infiniteSlideBuffer ? false : isBeginning && !loop && !rewind
+              }
               aria-label="Forrige slide"
               className={twMerge(
                 `custom-prev relative z-[30] group size-[54px] rounded-full flex items-center justify-center pointer-events-auto border border-black
@@ -177,7 +203,7 @@ export default function SwiperWrapper({
             </button>
             <button
               type="button"
-              disabled={isEnd && !loop}
+              disabled={infiniteSlideBuffer ? false : isEnd && !loop && !rewind}
               aria-label="Næste slide"
               className={twMerge(
                 `custom-next relative z-[30] group size-[54px] rounded-full flex items-center justify-center pointer-events-auto border border-black
