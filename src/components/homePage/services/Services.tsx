@@ -58,7 +58,7 @@ export default function Services({ services }: ServicesProps) {
           exit="exit"
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInAnimation({ y: 30, scale: 0.95, delay: 0.6 })}
-          className="w-screen max-w-[1455px]"
+          className="w-screen"
         >
           <TextRevealCardsSlider slides={slides} />
         </motion.div>

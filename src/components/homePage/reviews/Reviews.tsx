@@ -62,7 +62,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.6, duration: 1, y: 30 })}
-          className="relative w-screen max-w-[1455px]"
+          className="relative w-screen"
         >
           <ReviewsSlider reviews={reviews} uniqueKey="home-reviews" />
           <StarIcon className="hidden lg:block absolute z-10 bottom-[54px] left-[338px] size-[67px] rotate-45" />

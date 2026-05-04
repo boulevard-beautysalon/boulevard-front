@@ -32,6 +32,7 @@ export default function ReviewsSlider({
           spaceBetween: 20,
         },
       }}
+      loop={true}
       uniqueKey={uniqueKey}
       swiperClassName="reviews-slider"
       buttonsPosition="center"
