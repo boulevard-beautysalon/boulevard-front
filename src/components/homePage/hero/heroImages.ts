@@ -40,7 +40,7 @@ export const HERO_GALLERY_IMAGES: HeroGalleryImage[] = [
 const SLIDE_BLUR_PLACEHOLDER =
   "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoKAAoAA4BaJZQC7AD8JgL+MoAA/I7x8o1tZ25wNA1ghl4riA3ZbtRxlzeae/qQAK+ICj7XcTRsWttn1Idx+MlrgAA=";
 
-/** Slides slideOne … slideFourteen (порядок 1–14). */
+/** Slides slideOne … slideSeventeen (порядок 1–17). */
 export const SMALL_HERO_SLIDER_IMAGES: HeroGalleryImage[] = [
   {
     url: "/images/homePage/hero/slideOne.webp",
@@ -110,6 +110,21 @@ export const SMALL_HERO_SLIDER_IMAGES: HeroGalleryImage[] = [
   {
     url: "/images/homePage/hero/slideFourteen.webp",
     alt: "Hero slide 14",
+    blurDataURL: SLIDE_BLUR_PLACEHOLDER,
+  },
+  {
+    url: "/images/homePage/hero/slideFifteen.webp",
+    alt: "Hero slide 15",
+    blurDataURL: SLIDE_BLUR_PLACEHOLDER,
+  },
+  {
+    url: "/images/homePage/hero/slideSixteen.webp",
+    alt: "Hero slide 16",
+    blurDataURL: SLIDE_BLUR_PLACEHOLDER,
+  },
+  {
+    url: "/images/homePage/hero/slideSeventeen.webp",
+    alt: "Hero slide 17",
     blurDataURL: SLIDE_BLUR_PLACEHOLDER,
   },
 ];
