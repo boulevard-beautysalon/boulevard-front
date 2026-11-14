@@ -1,4 +1,4 @@
-export const revalidate = 60;
+export const revalidate = 21600; // 6 h fallback (Hobby ISR-writes quota: never lower); instant updates come from the Sanity webhook (/api/revalidate)
 
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";

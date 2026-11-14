@@ -61,7 +61,7 @@ export async function getGoogleReviews(): Promise<Review[]> {
         "X-Goog-FieldMask":
           "reviews.name,reviews.rating,reviews.text,reviews.originalText,reviews.publishTime,reviews.authorAttribution.displayName,reviews.authorAttribution.photoUri",
       },
-      next: { revalidate: 60 * 60 },
+      next: { revalidate: 86400 }, // reviews change rarely; daily refresh keeps ISR writes low
     });
 
     if (!response.ok) {
